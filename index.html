@@ -16,15 +16,50 @@
 </head>
 <body>
     
+    <div class="my-5 text-center">
+        <div class="container">
+            <h2 class="mb-3">Nájdi trasu na FEIku!</h2>
+            <form action="#" id="findRouteForm" class="form">
+                
+                <div class="form-group">
+                    <label for="pac-input">Miesto štartu:</label>
+                    <input id="pac-input" class="controls form-control" type="text" placeholder="Tu vyhľadajte miesto" required>
+                    <div class="invalid-feedback">
+                        Zadajte prosím platné miesto
+                    </div>
+                </div>
+                <div class="form-group">
+        
+                    <label for="vehicle-car">Autom:</label>
+                    <input type="radio" name="vehicle" value="DRIVING" id="vehicle-car" required>
+                    <label for="vehicle-walk">Peši:</label>
+                    <input type="radio" name="vehicle" value="WALKING" id="vehicle-walk" required>
+                    <div class="invalid-feedback">
+                        Prosím vyberte jednu z možností
+                    </div>
+                </div>
+                
+                <input type="submit" value="Vyhľadať" class="btn btn-dark btn-block">
+            </form>
+            <div id="message"></div>
 
+        </div>
 
-    
+    </div>
+    <div id="maps">
+
+        <div id="map"></div>
+        <div id="pano"></div>
+    </div>
 
     <!-- JQUERY -->
     <script src="assets/js/jquery.min.js"></script>
 
     <!-- BOOTSTRAP -->
     <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- GOOGLE MAPS -->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcdjdxNQYh5Eluig6feOxQrIK3xOnSeSk&callback=initialize&libraries=places"></script>
 
     <!-- SCRIPTS -->
     <script src="assets/js/app.js"></script>

@@ -1,0 +1,11 @@
+#map, #pano {
+    height: 600px;
+    /* The height is 400 pixels */
+    width: 50%;
+    /* The width is the width of the web page */
+    z-index: 200;
+}
+
+#maps {
+    display: flex;
+}
