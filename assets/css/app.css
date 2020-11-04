@@ -1,14 +1,27 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.logo-container img {
+  max-width: 100%;
+}
+
 #map, #pano {
   height: 600px;
   /* The height is 400 pixels */
-  width: 50%;
+  width: 100%;
   /* The width is the width of the web page */
   z-index: 200;
 }
 
-#maps {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+@media (min-width: 920px) {
+  #map, #pano {
+    width: 50%;
+  }
+  #maps {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 /*# sourceMappingURL=app.css.map */

@@ -7,6 +7,7 @@
 
 
     <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -15,37 +16,50 @@
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <body>
-    
-    <div class="my-5 text-center">
+    <header class="logo-container bg-primary p-3 text-center">
+
+        <img src="assets/images/logo.png" alt="logo fei stu">
+    </header>
+    <main class="my-5 text-center">
         <div class="container">
-            <h2 class="mb-3">Nájdi trasu na FEIku!</h2>
-            <form action="#" id="findRouteForm" class="form">
-                
-                <div class="form-group">
-                    <label for="pac-input">Miesto štartu:</label>
-                    <input id="pac-input" class="controls form-control" type="text" placeholder="Tu vyhľadajte miesto" required>
-                    <div class="invalid-feedback">
-                        Zadajte prosím platné miesto
-                    </div>
+            <div class="row">
+                <div class="col-sm-12 offset-lg-4 col-lg-4">
+                    
+                    <h2 class="mb-3">Nájdi trasu na FEIku!</h2>
+                    <form action="#" id="findRouteForm" class="form">
+                        
+                        <div class="form-group">
+                            <label for="pac-input">Miesto štartu:</label>
+                            <input id="pac-input" class="controls form-control" type="text" placeholder="Tu vyhľadajte miesto" required>
+                            <div class="invalid-feedback">
+                                Zadajte prosím platné miesto
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+
+                                <label for="vehicle-car">Autom:</label>
+                                <input type="radio" name="vehicle" value="DRIVING" id="vehicle-car" required>
+                            </div>
+                            <div>
+
+                                <label for="vehicle-walk">Peši:</label>
+                                <input type="radio" name="vehicle" value="WALKING" id="vehicle-walk" required>
+                            </div>
+                            <div class="invalid-feedback">
+                                Prosím vyberte jednu z možností
+                            </div>
+                        </div>
+                        
+                        <input type="submit" value="Vyhľadať" class="btn btn-dark btn-block">
+                    </form>
+                    <div id="message"></div>
                 </div>
-                <div class="form-group">
-        
-                    <label for="vehicle-car">Autom:</label>
-                    <input type="radio" name="vehicle" value="DRIVING" id="vehicle-car" required>
-                    <label for="vehicle-walk">Peši:</label>
-                    <input type="radio" name="vehicle" value="WALKING" id="vehicle-walk" required>
-                    <div class="invalid-feedback">
-                        Prosím vyberte jednu z možností
-                    </div>
-                </div>
-                
-                <input type="submit" value="Vyhľadať" class="btn btn-dark btn-block">
-            </form>
-            <div id="message"></div>
+            </div>
 
         </div>
 
-    </div>
+    </main>
     <div id="maps">
 
         <div id="map"></div>

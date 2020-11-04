@@ -9,7 +9,7 @@ function initialize() {
     /**
      * BASIC MAP
      */
-    let fei = {lat: 48.151854173169156, lng: 17.073254174433746};
+    let fei = {lat: 48.1518606, lng: 17.0733264};
     map = new google.maps.Map(document.getElementById('map'), {
         center: fei,
         zoom: 16
@@ -35,6 +35,7 @@ function initialize() {
         if( ! searchBox.getPlaces() ) {
             makeInvalid( input )
         } else {
+
             makeValid( input )
         }
     })
@@ -79,11 +80,13 @@ function initialize() {
 
 
         let places = searchBox.getPlaces();
-        if( ! places ) {
+        if( ! places || places.length <= 0 ) {
             makeInvalid( input )
             
         } else {
             makeValid( input )
+            console.log(places[0].name)
+            input.value = places[0].name
             calcRoute(places[0].geometry.location, fei, directionsService, directionsRenderer, vehicleName)
         }
     });
@@ -92,10 +95,23 @@ function initialize() {
 
     // MARKER POINTING TO FEI
     const marker = new google.maps.Marker({
-      position: fei,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      title: 'Fakulta elektrotechniky a informatiku STU'
+        position: fei,
+        map: map,
+        animation: google.maps.Animation.DROP,
+        title: 'Fakulta elektrotechniky a informatiku STU',
+        icon: {
+            labelOrigin: new google.maps.Point(25, 60), // Offset labelu
+            url:"http://maps.google.com/mapfiles/ms/icons/yellow.png",  // Cesta k obrazku
+            scaledSize: new google.maps.Size(50, 50), // Zoskalovanie obrazku
+            origin: new google.maps.Point(0, 0), //Roh obrazka
+            anchor: new google.maps.Point(0, 50), // Offset Ikony
+        },
+        label: {
+            color: 'blue',
+            fontWeight: 'bold',
+            text: 'FEI STU'
+        }
+     
     });
 
     // CREATING POPUP
@@ -107,6 +123,8 @@ function initialize() {
     marker.addListener("click", () => {
         infowindow.open(map, marker);
     });
+
+    console.log( document.querySelector('img[usermap="#gmimap0"]') )
 
 
     // REQUEST FOR BUS STOPS
@@ -178,7 +196,16 @@ function createMarker(place) {
         position: place.geometry.location,
         icon: {
             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-        }
+        },
+    });
+    // CREATING POPUP
+    const infowindow = new google.maps.InfoWindow({
+        content: `Zastávka: ${place.name}`
+    })
+
+    // EVENT LISTENER FOR MAIN MARKER POPUP
+    marker.addListener("click", () => {
+        infowindow.open(map, marker);
     });
     // google.maps.event.addListener(marker, "click", () => {
     // //   infowindow.setContent(place.name);
